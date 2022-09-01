@@ -57,14 +57,12 @@ const Header = () => {
 
   const textStyle = {
     flexGrow: 1,
+    // width: "80vw",
     display: { xs: "none", sm: "block" },
-    "&:hover": {
-      cursor: "pointer",
-    },
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ display: "flex" }}>
       <AppBar position="fixed" sx={{ bgcolor: "black" }}>
         <Toolbar>
           <IconButton
@@ -76,18 +74,18 @@ const Header = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={textStyle}
-            onClick={() => {
-              navigate("/");
-            }}
-          >
-            Alerter
+          <Typography variant="h6" component="div" sx={textStyle}>
+            <Box
+              onClick={() => {
+                navigate("/");
+                console.log("hi");
+              }}
+            >
+              Alerter
+            </Box>
           </Typography>
-          <Search>
+          <Box sx={{ width: "70%" }}> </Box>
+          <Search sx={{ float: "right" }}>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
