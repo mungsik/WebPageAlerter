@@ -63,7 +63,7 @@ const Header = () => {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <AppBar position="fixed" sx={{ bgcolor: "black" }}>
+      <AppBar position="static" sx={{ bgcolor: "black", zIndex: 1 }}>
         <Toolbar>
           <IconButton
             size="large"
