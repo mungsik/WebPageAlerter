@@ -1,12 +1,11 @@
-import { Box, Container } from "@mui/material";
+import { Box } from "@mui/material";
 import wallStreet from "./imgs/wallStreet.jpg";
 import MainPage from "./../pages/MainPage";
 
 const Main = () => {
   const mainStyle = {
+    display: "flex",
     height: "100vh",
-
-    // backgroundPosition: "center",
     backgroundImage: `url(${wallStreet})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
