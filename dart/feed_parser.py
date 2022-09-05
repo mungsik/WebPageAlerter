@@ -10,18 +10,6 @@ from dotenv import load_dotenv
 from calendar import c
 from bs4 import BeautifulSoup
 
-
-"""
-<------------------>
-    csv파일로 변환
-<------------------>
-"""
-
-fileName = "today_notice.csv"
-f = open(fileName, "w", encoding="utf-8-sig", newline="")
-writer = csv.writer(f)
-
-
 """
 <------------------>
     dart 분석
@@ -72,7 +60,6 @@ def real_time_info():
     if new_contents:
         for content in new_contents:
             print(content)
-            writer.writerow(content)
 
     # 없으면 패스
     else:
@@ -80,6 +67,34 @@ def real_time_info():
 
     # 기존 링크를 계속 축적하기 위함
     old_contents += new_contents.copy()
+
+    load_dotenv()
+
+    db = pymysql.connect(
+        host=os.environ.get("DB_HOST"),
+        user=os.environ.get("DB_USER"),
+        password=os.environ.get("DB_PASSWORD"),
+        db=os.environ.get("DB_NAME"),
+        charset="utf8",
+    )
+
+    curs = db.cursor()
+
+    # curs.execute("DROP TABLE IF EXISTS today_notice")
+
+    # curs.execute(
+    #     "CREATE TABLE today_notice (id INT, company VARCHAR(100), report_head VARCHAR(100), date DATE, url VARCHAR(2048))"
+    # )
+    i = 1
+
+    for item in new_contents:
+        curs.execute(
+            f'INSERT INTO today_notice VALUES({i},"{item[0]}","{item[1]}","{item[2]}","{item[3]}")'
+        )
+        i += 1
+
+    db.commit()
+    db.close()
 
 
 # 실제 프로그램 구동
@@ -96,31 +111,3 @@ if __name__ == "__main__":  # 프로그램의 시작점일 때만 아래 코드 
         schedule.run_pending()
         time.sleep(1)
 
-"""
-<-------------->
-MySQL로 데이터 옮기기
-<-------------->
-"""
-
-csv_data = pd.read_csv("today_notice.csv")
-csv_data = csv_data.where((pd.notnull(csv_data)), None)
-
-load_dotenv()
-
-db = pymysql.connect(
-    host=os.environ.get("DB_HOST"),
-    user=os.environ.get("DB_USER"),
-    password=os.environ.get("DB_PASSWORD"),
-    db=os.environ.get("DB_NAME"),
-    charset="utf8",
-)
-
-curs = db.cursor()
-
-sql = "INSERT IGNORE INTO today_notices(company, report_head, date, url) VALUES (%s, %s, %s, %s)"
-
-for idx in range(len(csv_data)):
-    curs.execute(sql, tuple(csv_data.values[idx]))
-
-db.commit()
-db.close()

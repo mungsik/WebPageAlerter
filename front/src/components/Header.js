@@ -57,13 +57,16 @@ const Header = () => {
 
   const textStyle = {
     flexGrow: 1,
-    // width: "80vw",
+    fontFamily: "Jalnan",
     display: { xs: "none", sm: "block" },
+    "&:hover": {
+      cursor: "pointer",
+    },
   };
 
   return (
     <Box sx={{ display: "flex" }}>
-      <AppBar position="static" sx={{ bgcolor: "black", zIndex: 1 }}>
+      <AppBar position="static" sx={{ background: "black", zIndex: 1 }}>
         <Toolbar>
           <IconButton
             size="large"
@@ -78,7 +81,6 @@ const Header = () => {
             <Box
               onClick={() => {
                 navigate("/");
-                console.log("hi");
               }}
             >
               Alerter
