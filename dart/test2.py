@@ -21,8 +21,8 @@ notice_url = "https://dart.fss.or.kr/dsac001/mainAll.do"
 baseURL = "https://dart.fss.or.kr"
 
 # 새로운 공시 정보를 받아오는 함수
-def get_new_contents(url):
-    response = requests.get(url)
+def get_new_contents(notice_url):
+    response = requests.get(notice_url)
     soup = BeautifulSoup(response.text, "html.parser")
 
     data_rows = (
@@ -48,31 +48,9 @@ def get_new_contents(url):
         #     writer.writerow(contents)
 
         return contents
-
-
-def get_new_urls(url):
-    response = requests.get(notice_url)
-    soup = BeautifulSoup(response.text, "html.parser")
-
-    data_rows = (
-        soup.find("table", attrs={"class": "tbList"}).find("tbody").find_all("tr")
-    )
-
-    dart_urls = []
-    for row in data_rows:
-        columns = row.find_all("td")
-        # 의미 없는 데이터 skip
-        # 칸 나누기용 공백 같은것
-        if len(columns) <= 1:
-            continue
-
-        dart_urls.append(baseURL + columns[2].find("a")["href"])
-
-    return dart_urls
-
-
+    
 while True:
-    dart_urls = get_new_urls(notice_url)
+    dart_contents = get_new_contents(notice_url)
 
     with open("today_notice.csv", "r") as f:
         reader = csv.reader(f)
@@ -81,13 +59,18 @@ while True:
 
     new_contents = []
 
-    for new in dart_urls:
+    for new in dart_contents:
         if new not in old_contents:
             new_contents.append(new)
         else:
             pass
 
-    for url in new_contents:
-        print("새로운 url", url)
-        new_contents = get_new_contents(url)
+    for content in new_contents:
+        print("새로운 content", content)
+        new_contents = get_new_contents(notice_url)
         print(new_contents)
+        # with open("today_notice.csv", "a", encoding="utf-8-sig", newline="") as f:
+        #     writer = csv.writer(f)
+        #     writer.writerow(f)
+        # print("새로운 리스트 추가")
+    time.sleep(20)
