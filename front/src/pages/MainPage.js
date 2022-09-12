@@ -29,23 +29,24 @@ const MainPage = () => {
 
   return (
     //TODO : lazy loding 적용하기
-
-    <Box sx={mainBox}>
-      <Grid container spacing={1}>
-        <Grid item xs={12}>
-          <Typography component="h1" sx={mainText}>
-            Now Is
-          </Typography>
-          <Typography component="h1" sx={mainText}>
-            The Time
-          </Typography>
+    <>
+      <Box sx={mainBox}>
+        <Grid container spacing={1}>
+          <Grid item xs={12}>
+            <Typography component="h1" sx={mainText}>
+              Now Is
+            </Typography>
+            <Typography component="h1" sx={mainText}>
+              The Time
+            </Typography>
+          </Grid>
+          <Grid item sm={6} xs={12}>
+            <Box sx={noticeBox}>비트코인 올라가자</Box>
+            <Box sx={noticeBox}>나스닥도 올라가자</Box>
+          </Grid>
         </Grid>
-        <Grid item sm={6} xs={12}>
-          <Box sx={noticeBox}>비트코인 올라가자</Box>
-          <Box sx={noticeBox}>나스닥도 올라가자</Box>
-        </Grid>
-      </Grid>
-    </Box>
+      </Box>
+    </>
   );
 };
 
