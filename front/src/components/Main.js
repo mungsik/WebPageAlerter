@@ -10,6 +10,7 @@ const Main = () => {
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
   };
+
   return (
     <Box sx={mainStyle}>
       <MainPage />

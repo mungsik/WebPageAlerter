@@ -1,0 +1,49 @@
+{
+  "name": "dart_notice_alerter",
+  "version": "1.0.0",
+  "description": "announce the real-time notice",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mungsik"
+  },
+  "keywords": [
+    "dart",
+    "notice",
+    "real-time"
+  ],
+  "author": "mungsik",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "cookie-parser": "^1.4.6",
+    "core-js": "^3.25.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.2",
+    "eventsource": "^2.0.2",
+    "express": "^4.18.1",
+    "express-async-errors": "^3.1.1",
+    "helmet": "^6.0.0",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "socket.io": "^4.5.2",
+    "socket.io-client": "^4.5.2",
+    "sse": "^0.0.8",
+    "ssestream": "^1.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.18.10",
+    "@babel/core": "^7.19.0",
+    "@babel/node": "^7.18.10",
+    "@babel/plugin-transform-runtime": "^7.18.10",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.19.0",
+    "babel-loader": "^8.2.5",
+    "nodemon": "^2.0.19"
+  }
+}

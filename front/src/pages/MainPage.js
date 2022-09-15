@@ -1,4 +1,5 @@
 import { Grid, Box, Typography } from "@mui/material";
+import Sse from "../components/Sse";
 
 const MainPage = () => {
   const mainBox = {
@@ -41,6 +42,7 @@ const MainPage = () => {
             </Typography>
           </Grid>
           <Grid item sm={6} xs={12}>
+            <Sse />
             <Box sx={noticeBox}>비트코인 올라가자</Box>
             <Box sx={noticeBox}>나스닥도 올라가자</Box>
           </Grid>

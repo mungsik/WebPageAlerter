@@ -37,6 +37,7 @@ def get_new_contents(old_contents=[]):
 
         contents.append(
             [
+                columns[0].get_text().strip().replace("\t", "").replace("\n", ""),
                 columns[1].get_text()[3:].strip().replace("\t", "").replace("\n", ""),
                 columns[2].get_text().strip().replace("\t", "").replace("\n", ""),
                 columns[4].get_text().strip().replace("\t", "").replace("\n", ""),
@@ -85,7 +86,7 @@ def real_time_info():
 
     curs = db.cursor()
 
-    sql = "INSERT INTO today_notice(company, report_head, date, url) VALUES (%s, %s, %s, %s)"
+    sql = "INSERT INTO today_notice(time,company, report_head, date, url) VALUES (%s,%s, %s, %s, %s)"
 
     for idx in range(len(csv_data)):
         curs.execute(sql, tuple(csv_data.values[idx]))
