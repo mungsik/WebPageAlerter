@@ -6,6 +6,7 @@ import helmet from "helmet";
 import "express-async-errors";
 import SSEStream from "ssestream";
 import noticesRouter from "./routes/notices.js";
+import { sequelize } from "./models/index.js";
 
 const PORT = 8080;
 
@@ -16,6 +17,15 @@ const corsOption = {
   optionsSuccessStatus: 200,
 };
 
+sequelize
+  .sync({ force: false }) // true면 서버 실행마다 테이블 재설정
+  .then(() => {
+    console.log("데이터베이스 연결 성공");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
 //? 사용중인 미들웨어들
 
 app.use(cors(corsOption));
@@ -25,7 +35,7 @@ app.use(cookieParser());
 app.use(morgan("tiny"));
 app.use(helmet());
 
-app.get("/notices", noticesRouter);
+// app.get("/notices", noticesRouter);
 
 app.get("/time/sse", (req, res) => {
   const headers = req.headers;
