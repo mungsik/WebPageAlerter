@@ -15,7 +15,7 @@ const MainPage = () => {
     padding: { xs: "32px 20px", sm: "64px 40px", lg: "115px 100px" },
   };
 
-  const mainText = { color: "white", fontSize: "2em", fontFamily: "Jalnan" };
+  const mainText = { color: "white", fontSize: "5em", fontFamily: "Jalnan" };
 
   return (
     //TODO : lazy loding 적용하기
@@ -27,7 +27,7 @@ const MainPage = () => {
               Now Is
             </Typography>
             <Typography component="h1" sx={mainText}>
-              The Time
+              The Time.
             </Typography>
           </Grid>
           <Grid item sm={6} xs={12}>

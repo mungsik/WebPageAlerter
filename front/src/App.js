@@ -12,6 +12,11 @@ const theme = createTheme({
   typography: {
     fontFamily: "'Source Sans Pro', sans-serif",
   },
+  palette: {
+    buttonColor: {
+      main: "#FFFFFF",
+    },
+  },
 });
 
 function App() {

@@ -1,8 +1,7 @@
 // import EventSource from "eventsource";
 import { NativeEventSource, EventSourcePolyfill } from "event-source-polyfill";
 import { useEffect, useState } from "react";
-import { Typography, Box, Link, Button } from "@mui/material";
-import * as Api from "../api.js";
+import { Typography, Box, Button } from "@mui/material";
 
 const Sse = () => {
   // Server Sent Event 로 가져온 data를 화면에 보여주기 위한 state 변수
@@ -19,6 +18,7 @@ const Sse = () => {
     // minWidth: "5rem",
     padding: "6px 16px 6px 12px",
     color: "white",
+    mt: "3rem",
   };
 
   useEffect(() => {
@@ -36,7 +36,6 @@ const Sse = () => {
     // }, []);
     //EventSource로 Server Sent Event를 호출하는 부분
     const eventSource = new EventSource("http://localhost:8080/notices");
-    console.log(eventSource);
 
     // EventSource 로 data 를 받아서 처리하는 event listener 설정
     eventSource.addEventListener("sseData", async function (event) {
@@ -64,8 +63,10 @@ const Sse = () => {
         target="_blank"
         rel="noreferrer noopener"
         href={sseUrl}
+        color="buttonColor"
+        style={{ backgroundColor: "transparent" }}
       >
-        상세정보
+        원본 링크
       </Button>
       {/* <Typography onClick={url}>공시보러가기</Typography> */}
     </Box>
