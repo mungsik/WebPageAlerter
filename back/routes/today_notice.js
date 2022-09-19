@@ -5,34 +5,35 @@ import SSEStream from "ssestream";
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  const notices = await today_notice.findAll({
-    order: [["id", "DESC"]],
-    limit: 1,
+  res.status(200).set({
+    connection: "keep-alive",
+    "cache-control": "no-cache",
+    "content-type": "application/json,",
   });
-
-  const result = [];
-
-  for (const notice of notices) {
-    // if (notice.report_head.length >= 10) {
-    //   return notice.report_head.substr(0, 10) + "...";
-    // }
-    result.push({
-      id: notice.id,
-      time: notice.time,
-      date: notice.date,
-      company: notice.company,
-      url: notice.url,
-      report_head: notice.report_head,
-    });
-  }
-  console.log(result);
 
   const sseStream = new SSEStream(req);
   // stream pipe 설정
   sseStream.pipe(res);
   // 1초 간격으로 시간을 보내주는 setInterval 구성
   const pusher = setInterval(async () => {
-    // 현재 시간, auth-user 정보를 client 로 보내주는 부분
+    const notices = await today_notice.findAll({
+      order: [["id", "DESC"]],
+      limit: 1,
+    });
+
+    const result = [];
+
+    for (const notice of notices) {
+      result.push({
+        id: notice.id,
+        time: notice.time,
+        date: notice.date,
+        company: notice.company,
+        url: notice.url,
+        report_head: notice.report_head,
+      });
+    }
+
     result.forEach((value) => {
       sseStream.write({
         event: "sseData",
@@ -46,7 +47,7 @@ router.get("/", async (req, res) => {
         },
       });
     });
-  }, 5000);
+  }, 1000);
 
   // close 시점에 setInterval 삭제, sseStream pipe 설정 해제
   res.on("close", () => {
