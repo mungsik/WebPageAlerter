@@ -78,7 +78,7 @@ def real_time_info():
 
     db = pymysql.connect(
         host=os.environ.get("DB_HOST"),
-        user=os.environ.get("DB_USER"),
+        user=os.environ.get("DB_USERNAME"),
         password=os.environ.get("DB_PASSWORD"),
         db=os.environ.get("DB_NAME"),
         charset="utf8",

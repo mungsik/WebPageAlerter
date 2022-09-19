@@ -17,17 +17,6 @@ const MainPage = () => {
 
   const mainText = { color: "white", fontSize: "2em", fontFamily: "Jalnan" };
 
-  const noticeBox = {
-    backgroundColor: "#1e222d80",
-    border: "none",
-    borderRadius: "56px",
-    cursor: "pointer",
-    height: "48px",
-    minWidth: "164px",
-    padding: "6px 16px 6px 12px",
-    color: "white",
-  };
-
   return (
     //TODO : lazy loding 적용하기
     <>
@@ -43,8 +32,6 @@ const MainPage = () => {
           </Grid>
           <Grid item sm={6} xs={12}>
             <Sse />
-            <Box sx={noticeBox}>비트코인 올라가자</Box>
-            <Box sx={noticeBox}>나스닥도 올라가자</Box>
           </Grid>
         </Grid>
       </Box>
