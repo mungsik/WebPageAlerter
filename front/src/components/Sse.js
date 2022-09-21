@@ -39,9 +39,7 @@ const Sse = () => {
 
     // EventSource 로 data 를 받아서 처리하는 event listener 설정
     eventSource.addEventListener("sseData", async function (event) {
-      console.log("event", event);
       const data = JSON.parse(event.data);
-      console.log("data : ", data[3]);
       setSseCompany(data.company);
       setSseReport(data.report_head);
       setSseUrl(data.url);
@@ -54,12 +52,23 @@ const Sse = () => {
 
   return (
     <Box sx={noticeBox}>
-      <Typography sx={{ pt: 0.5, fontWeight: "bold", fontSize: 20 }}>
+      <Typography
+        sx={{
+          transition: "all 1s ease-in-out 1s",
+          pt: 0.5,
+          fontWeight: "bold",
+          fontSize: 20,
+        }}
+      >
         {sseCompany}
       </Typography>
-      <Typography sx={{ mt: 1, color: "red" }}>{sseReport}</Typography>
+      <Typography
+        sx={{ transition: "all 1s ease-in-out 1s", mt: 1, color: "red" }}
+      >
+        {sseReport}
+      </Typography>
       <Button
-        sx={{ mt: 1 }}
+        sx={{ transition: "all 1s ease-in-out 1s", mt: 1 }}
         target="_blank"
         rel="noreferrer noopener"
         href={sseUrl}
@@ -68,7 +77,6 @@ const Sse = () => {
       >
         원본 링크
       </Button>
-      {/* <Typography onClick={url}>공시보러가기</Typography> */}
     </Box>
   );
 };
