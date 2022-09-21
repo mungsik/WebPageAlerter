@@ -4,25 +4,13 @@
 
 ### Summary
 ---
+- 주가에 긍정적인 영향을 미치는 데이터를 분석하여 제공하는 사이트
 
-
-- 웹 페이지 
-  
-  실시간 공시 정보를 화면에 보여줌
+- 실시간 공시 정보를 화면에 보여줌
 </br>
-
-
-
-
-
-
 
 ### About Project
 ---
-</br>
-
-![image](https://user-images.githubusercontent.com/104895119/191014033-0c8aea6c-1a0c-4671-90d9-81ee8a952870.png)
-
 
 
 #### FrontEnd
@@ -52,9 +40,26 @@
 - AWS RDS 생성하여 DB 구축 
 - 공시 데이터 DB에 저장
 </br>
+</br>
 
 
 
 
 ###  Result
 ---
+</br>
+
+![DART서비스 영상](https://user-images.githubusercontent.com/104895119/191154337-1d6acd99-a9c2-420b-bf34-38e6294235b5.gif)
+</br>
+</br>
+
+### TODO
+---
+
+- NGINX를 이용한 배포 
+- 회원가입 CRUD 기능 구현
+- 데이터 분석을 통해 회사 주가와 양의 상관 관계를 갖는 데이터를 찾고, 그 데이터에 맞는 페이지와 기능 추가
+- 코드 리펙토리 등등 ... 😀
+
+ 
+  
