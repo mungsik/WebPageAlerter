@@ -49,8 +49,9 @@
 ---
 </br>
 
-![DART서비스 영상](https://user-images.githubusercontent.com/104895119/191154337-1d6acd99-a9c2-420b-bf34-38e6294235b5.gif)
-</br>
+
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/104895119/191913802-e2812fdc-5205-4aa8-8879-48fc85140fb5.gif)
+
 </br>
 
 ### TODO
